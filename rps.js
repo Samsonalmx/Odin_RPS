@@ -1,12 +1,12 @@
 console.log("Rock, Paper, Scissors Game");
-console.log("/n");
+console.log("\n");
 let humanScore = 0;
 let computerScore = 0;
 
 function getcomputerChoice() {
     let computerChoice;
-    random1 = Math.random();
-    random2 = Math.floor(random1 * 3) + 1;
+    let random1 = Math.random();
+    let random2 = Math.floor(random1 * 3) + 1;
 
     switch (random2) {
         case 1:
@@ -24,19 +24,17 @@ function getcomputerChoice() {
 
 function gethumanChoice() {
     let humanChoice;
-    let hchoice = prompt("Enter your choice: rock, paper, or scissors").toLowerCase();
+    while (true) {
+        let hchoice = prompt("Enter your choice: rock, paper, or scissors");
+        if (!hchoice) continue;
+        hchoice = hchoice.toLowerCase();
 
-   if(hchoice == "rock"){
-         humanChoice = "rock";
-     }
-    else if(hchoice == "paper"){
-            humanChoice = "paper";
-      }
-    else if(hchoice == "scissors"){
-            humanChoice = "scissors";
-      }
-    else {
-        console.log("Invalid choice. Please try again.");
+        if (hchoice === "rock" || hchoice === "paper" || hchoice === "scissors") {
+            humanChoice = hchoice;
+            break;
+        } else {
+            console.log("Invalid choice. Please try again.");
+        }
     }
     return humanChoice;
 }
@@ -76,3 +74,5 @@ function game() {
         console.log("The game is a tie!");
     }
 }
+
+game();
